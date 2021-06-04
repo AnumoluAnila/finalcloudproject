@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0px;
+    font-family: sans-serif;
+}
+body{
+    height:80vh;
+}
+/* .button1{
+    padding: 7px;
+    background: cyan;
+    margin-top: 20px;
+    margin-left: 1385px;
+    border: cyan;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.button2{
+    padding: 7px;
+    background: cyan;
+    margin-left: 15px;
+    border: cyan;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+} */
+
+.header1 h2{
+    width:55%;
+    margin: 80px auto 0px;
+    color:white;
+    background: rgb(97, 97, 236);
+    text-align: left;
+    border: 1px solid rgb(97, 97, 236);
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    padding: 30px;
+    font-weight: bold;
+    /* margin-top: 90px; */
+}
+
+.container{
+    width: 55%;
+    margin: 0px auto;
+    padding: 30px;
+    border: 1px solid #b0c4de;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+}
+   
+.btn1{
+    padding: 10px 30px 10px 30px;
+    font-size:15px;
+    color:white;
+    background: rgb(44, 44, 206);
+    border:none;
+    border-radius: 5px;
+    margin:0px 30px 10px 0px;
+    float:right;  
+}
+.btn2{
+    padding: 10px 30px 10px 30px;
+    font-size:15px;
+    color:white;
+    background: rgb(44, 44, 206);
+    border:none;
+    border-radius: 5px;
+    margin:0px 20px 10px 0px;
+    float:right;  
+}
+
+.form-group1{
+    color:blue;
+    font-weight: bold;
+    font-size: 20px;
+}
+.image{
+    margin-left: 50px;
+}
+
+.btn1:hover{
+    font-weight: bold;
+}
+
+.btn2:hover{
+    font-weight: bold;
+}
+ 
+#output{
+    border: black;
+}

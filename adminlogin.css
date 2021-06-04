@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 120%;
+    /* background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(Nutritional-Supplements.png);
+    height: 100%;
+    width:100%;
+    background-position:center;
+    background-size: cover;
+    position: absolute; */
+}
+.hero{
+    height: 100%;
+    width:100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(register.jpg);
+    background-position:center;
+    background-size: cover;
+    position: absolute;
+}
+
+
+.header{
+    width:25%;
+    margin: 160px auto 0px;
+    color:white;
+    background: rgb(57, 57, 202);
+    text-align: center;
+    border: 1px solid rgb(57, 57, 202);
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+}
+
+form{
+    width: 25%;
+    margin: 0px auto;
+    padding: 20px;
+    border:1px solid rgb(57, 57, 202);
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.input-group{
+    margin:15px 0px 30px 15px;
+}
+
+.input-group input{
+    height:38px;
+    width:93%;
+    padding: 5px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border:1px solid grey;
+}
+
+.btn{
+    padding: 15px;
+    font-size: 15px;
+    color:white;
+    background: rgb(57, 57, 202);
+    border: none;
+    border-radius: 5px;
+    margin-left: 120px;
+}

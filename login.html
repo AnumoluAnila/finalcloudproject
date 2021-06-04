@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login and register form</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    
+    <div class="hero">
+        
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                <button type="button" class="toggle-btn" onclick="register()">Register</button>
+            </div>
+
+            <form id="login" class="input-group" method="POST" action="login.php">
+                <input type="email" class="input-field" placeholder="Email id" name="cemail" required>
+                <input type="password" class="input-field" placeholder="Password"  name="pwd"required>
+                <br>
+                <br>
+                
+                <a href="forgot.php">Forgot Password</a>
+                <br><br>
+                <button type="submit" class="submit-btn" name="login">Log In</button>
+            </form>
+
+            <form id="register" class="input-group" method="POST" action="register.php">
+                <input type="text" class="input-field" placeholder="Name" name="cname" required pattern="[a-zA-Z|' ']{3,30}" title="Only letters and spaces are allowed with a maximum length of 3-30 letters.">
+                <input type="email" class="input-field" placeholder="Email Id" name="cemail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Only letters, numbers, periods(.) and '@' are allowed.">
+                <input type="password" class="input-field" placeholder="Password" name="pwd" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                <input type="password" class="input-field" placeholder="Re-enter Password" name="rpwd" required>
+                <input type="text" class="input-field" placeholder="Phone Number" name="phno" required pattern="[6-9]{1}[0-9]{9}" required title="Only numbers starting with 6,7,8,9 are allowed. Maintain the length of 10.">
+                <input type="text" class="input-field" placeholder="City" name="city" required pattern="[A-Za-z|' ']+" title="Only letters and spaces are allowed.">
+                <input type="text" class="input-field" placeholder="Pincode" name="pincode" required pattern="[1-9]{1}[0-9]{5}" required title=")nly 6 digits without spaces are allowed.">
+                <!-- <select id="ut" class="input-field" required >
+                    <option value="" disabled selected hidden>Select User Type</option>
+                    <option value="Customer" >Customer</option>
+                    <option value="Supplier" >Supplier</option>
+                 </select> -->
+                 <!-- <input type="text" id="cn" class="input-field" placeholder="company name" required pattern="[A-Za-z0-9|' ']+" title="Only letters and spaces are allowed."> -->
+
+                <br><br>
+                <button type="submit" class="submit-btn" name="register">Register</button>
+            </form>
+        </div>
+
+</div>
+    <script>
+        var x=document.getElementById("login");
+        var y=document.getElementById("register");
+        var z=document.getElementById("btn");
+        // var a=document.getElementById("cn");
+			// a.style.display="None";
+		// var b=document.getElementById("ut");
+		// 	b.addEventListener('input',fun);
+
+        function register(){
+            x.style.left="-400px";
+            y.style.left="50px";
+            z.style.left="110px";
+        }
+
+        function login(){
+            x.style.left="50px";
+            y.style.left="450px";
+            z.style.left="0";
+        }
+
+        // function fun(){
+		// 	var a=document.getElementById("cn");
+		// 	if(b.value=='Supplier'){
+		// 		a.style.display="block";
+		// 	}else{
+		// 		a.style.display="none";
+		// 	}
+		// }
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>
