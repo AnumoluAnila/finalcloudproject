@@ -1,7 +1,7 @@
 <?php
     $servername="localhost";
     $username="root";
-    $password="";
+    $password="anila";
     $dbname="cloudproject";
 
     $con=mysqli_connect($servername,$username,$password,$dbname);
