@@ -53,30 +53,44 @@ else{
     <!-- <link rel="stylesheet" href="medicine.css"> -->
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
- 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto  mr-3">
-      
-      <li class="nav-item">
-        <a class="nav-link font-weight-bold text-white bg-dark rounded" href="customer.php">Home</a>
-      </li>
-      <li class="nav-item ml-3">
-        <a class="nav-link  font-weight-bold text-white bg-dark rounded" href="mycart.php">Cart</a>
-      </li>
-      
-    </ul>
-  </div>
-</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <!-- <div class="container"> -->
+                    <!-- <a class="navbar-brand" href="#">PMS</a> -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="customer.php">Home </a>
+                    </li>
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="about.php">AboutUs</a>
+                    </li>
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="medicine.php">Medicine</a>
+                    </li>
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="mycart.php">Cart</a>
+                    </li>
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="orderpage.php">Orders</a>
+                    </li>
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="logout2.php">Logout</a>
+                    </li>
+                </ul> 
+                </div>      
+                <!-- </div> -->
+              </nav>
+              
 <div class="row ml-0 mr-0 ">
 <div class="col-lg-3 ml-5">
     <form  method="GET">
-        <div class="card  mt-4">
-            <div class="card-header">
-                <h5>Categories
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                <h5>Categories</h5>
                 <!-- <button type="submit" class="btn btn-primary btn-sm float-right">Search</button></h5> -->
             </div>
             <div class="card-body">
@@ -100,6 +114,37 @@ else{
                     ?>
                     </ul>
                 </div>
+
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                <h5>Types</h5>
+                <!-- <button type="submit" class="btn btn-primary btn-sm float-right">Search</button></h5> -->
+            </div>
+            <div class="card-body">
+                <div class=" row row1">
+                  <ul class="list-group">
+                  <?php 
+                    include 'dbconn.php';
+                    $selectquery="select distinct mtype from medicine order by mtype";
+                    $query=mysqli_query($con,$selectquery);
+                    while($result=mysqli_fetch_array($query)){
+                    ?>
+                    
+                    <label class="form-check-label"> 
+                    <div class="col-md-12 ml-4 mb-2">
+                        <input type="checkbox" class="form-check-input product_check" value="<?= $result['mtype']; ?>" id="mtype" ><?=$result['mtype'];?>
+                    </div>
+                     </label>
+                   
+                    <?php
+                    }
+                    ?>
+                    </ul>
+                </div>
+                
             </div>
         </div>
 
@@ -117,7 +162,22 @@ else{
                     $query1=mysqli_query($con,$selectquery1);
                     while($result1=mysqli_fetch_assoc($query1)){
                     ?>
-            <div class="card  mt-4 mx-4">
+          
+                    <?php
+                         include 'dbconn.php';
+                         $d=$result1['mcate'];
+                         $selectquery2="select * from medicine where mcate='$d'";
+                        //  echo $selectquery;
+                         $query=mysqli_query($con,$selectquery2) or die( mysqli_error($con));
+                         $a=mysqli_num_rows($query);
+                         $flag=0;
+                         while($result=mysqli_fetch_assoc($query)){
+                           if($result['mqty']>0){
+                             if($flag==0){
+
+
+                              ?>
+                                <div class="card  mt-4 mx-4">
             <div class="card-header"><h5 class="text-center" id="textchange"> <?php echo $result1['mcate']; ?></h5></div>
            
             <div class="card-body">
@@ -125,14 +185,11 @@ else{
                     <img src="200.gif" id="loader" width="100" style="display:none;">
             </div>
                 <div class="row" >
-                    <?php
-                         include 'dbconn.php';
-                         $d=$result1['mcate'];
-                         $selectquery2="select * from medicine where mcate='$d'";
-                        //  echo $selectquery;
-                         $query=mysqli_query($con,$selectquery2) or die( mysqli_error($con));
-                         while($result=mysqli_fetch_assoc($query)){
-                           if($result['mqty']>0){
+
+                              <?php
+
+                              $flag=1;
+                             }
                     ?>
                     
                     <div class="col-md-3">
@@ -156,9 +213,26 @@ else{
                     }
                   }
                     ?>
-                </div>
-                </div>
+<?php
+
+
+if($flag==1){
+
+  ?>
+
+
+
+  </div>
+  </div>
               </div> 
+  <?php
+
+
+}
+?>
+                  
+                
+               
             <?php
                     }
                     ?>  
@@ -177,12 +251,13 @@ var king=$("#result").html();
       $("#loader").show();
       var action='data';
       var mcate=get_filter_text('mcate');
+      var mtype=get_filter_text('mtype');
     console.log(mcate);
-    if(mcate.length!=0){
+    // if(mcate.length!=0 or mtype.length!=0){
       $.ajax({
         url:'action1.php',
         method:'POST',
-        data:{action:action,mcate:mcate},
+        data:{action:action,mcate:mcate,mtype:mtype},
         success:function(response){
           $("#result").html(response);
           console.log(response);
@@ -190,9 +265,10 @@ var king=$("#result").html();
           // $("#textchange").text("Filtered medicine");
         }
       });
-    }else{
-      $("#result").html(king);
-    }
+    // }
+    // }else{
+    //   $("#result").html(king);
+    // }
     });
     function get_filter_text(text_id){
       var filterData=[];

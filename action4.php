@@ -1,15 +1,14 @@
 <?php
-     include 'dbconn.php';
-     
-     session_start();
-   
+    include 'dbconn.php';
+    $output='';
 
-   
-   
-   
-
-     if(isset($_POST['action'])){
-         $sql="select * from medicine";
+    if(isset($_POST['query'])){
+        $search=$_POST['query'];
+        $stmt=$con->prepare("SELECT * FROM medicine WHERE mname LIKE CONCAT('%',?,'%')");
+        $stmt->bind_param("s",$search);
+    }
+    else{
+        $stmt=$con->prepare("select * from medicine");
         $mcate=array();
          if(isset($_POST['mcate'])){
           //  $mcate=implode("','",$_POST['mcate'])
@@ -112,16 +111,6 @@
                     </div>
                     </div>
                   </div> ';
-                  $finoutput.=$output.$output1.$output3;
-                        }else{
-                  $finoutput.="";
-                        }
-
-            }
-         }
-         else{
-            $finoutput="<h3>NO Medicine Found!</h3>" ;
-         }
-         echo  $finoutput;
-     }
-?>
+    }
+    $stmt->execute();
+    $result=$stmt->get_result();

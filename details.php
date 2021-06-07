@@ -24,87 +24,82 @@ session_start();
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active mr-3">
-                        <a class="nav-link" href="customer.php">Home </a>
+                        <a class="nav-link" href="supplier.php">Home </a>
                     </li>
                     <li class="nav-item active mr-3">
-                        <a class="nav-link" href="about.php">AboutUs</a>
+                        <a class="nav-link" href="addmedicine.php">Add Medicine</a>
                     </li>
                     <li class="nav-item active mr-3">
-                        <a class="nav-link" href="medicine.php">Medicine</a>
+                        <a class="nav-link" href="viewmedicine.php">View Medicine</a>
                     </li>
                     <li class="nav-item active mr-3">
-                        <a class="nav-link" href="mycart.php">Cart</a>
+                        <a class="nav-link" href="customerorders.php">Customer Orders</a>
                     </li>
                     <li class="nav-item active mr-3">
-                        <a class="nav-link" href="orderpage.php">Orders</a>
+                        <a class="nav-link" href="details.php">Contact Us</a>
                     </li>
                     <li class="nav-item active mr-3">
-                        <a class="nav-link" href="logout2.php">Logout</a>
+                        <a class="nav-link" href="logout.php">Logout</a>
                     </li>
+                   
                 </ul> 
-                </div>      
+                </div>       
                 <!-- </div> -->
               </nav>
             <!-- </div> -->
             <div class="container ">
                 <div class="row col-lg-12">
                     <div class="col-lg-12 text-center text-primary mt-5 ">
-                        <h1>MY ORDERS</h1>
+                        <h1>ContactUs Details</h1>
                     </div>
                 
                 <table class="table table-hover table-bordered mt-4">
                 <tr class="bg-secondary text-white text-center">
-                    <th>MedicineImg</th>
-                    <th>MedicineName</th>
-                    <th>Category</th>
-                    <th>MedicineType</th>
-                    <th>Price</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <!-- <th>Price</th>
                     <th>Quantity</th>
-                    <th>ordered date</th>
+                    <th>ordered date</th> -->
                     <!-- <th>Remove</th> -->
                     <!-- <th>Delete</th> -->
                 </tr>
                 <?php
            
             include 'dbconn.php';
-            $k=$_SESSION["mail"];
+            // $k=$_SESSION["mail"];
            
-            $selectquery="select * from orders where cemail='$k'";
-            $query=mysqli_query($con,$selectquery);
+            // $selectquery="select * from orders where cemail='$k'";
+            // $query=mysqli_query($con,$selectquery);
             
-            while($result=mysqli_fetch_array($query)){
-                $a=$result['mid'];
+            // while($result=mysqli_fetch_array($query)){
+                // $a=$result['mid'];
                 
-                $selectquery1="select * from medicine where mid='$a'";
+                $selectquery1="select * from contact";
                 
                 $query1=mysqli_query($con,$selectquery1);
                 $result1=mysqli_fetch_array($query1);
-                $numrows=mysqli_num_rows($query1);
-                if($numrows){
-                $q=$result['qty'];
-                $p=$result1['price'];
-                $t=$q*$p;
+                // $numrows=mysqli_num_rows($query1);
+                // if($numrows){
+                // $q=$result['qty'];
+                // $p=$result1['price'];
+                // $t=$q*$p;
                
             
         ?>
-        <form method="POST" action="re.php">
+        <form method="POST">
                 <tr> 
-                    <td><img src="<?php echo $result1['mlink'];?>" width="100" height="50"></td>  
-                    <td><?php echo $result1['mname'] ;?></td>
-                    <td><?php echo $result1['mcate']; ?> </td>
-                    <td> <?php echo $result1['mtype']; ?></td>
-                    <td ><?php echo $t?></td>
-                    <!-- <input type="hidden" class='iprice' value=''> -->
-                    <td><?php echo $result['qty']; ?> </td>
-                    <td ><?php echo $result['date'];?></td>
+                    <td><?php echo $result1['name'];?></td>  
+                    <td><?php echo $result1['email'] ;?></td>
+                    <td><?php echo $result1['subject']; ?> </td>
+                    <td><?php echo $result1['wam']; ?></td>
+                   
                    
                 </tr>
                 </form>   
                    
-        <?php
-        }
-    }
-    ?>
+      
     
  
        

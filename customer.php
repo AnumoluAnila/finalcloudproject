@@ -33,14 +33,18 @@
                         <a class="nav-link" href="customer.php">Home </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="about.php">AboutUs</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="medicine.php">Medicine</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="mycart.php">Cart</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Orders</a>
+                        <a class="nav-link" href="orderpage.php">Orders</a>
                     </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="logout2.php">Logout</a>
                     </li>

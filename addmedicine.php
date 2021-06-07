@@ -19,11 +19,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item active mr-3">
                         <a class="nav-link" href="supplier.php">Home </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="addmedicine.php">Add Medicine</a>
+                    </li>
+                    <li class="nav-item active mr-3">
                         <a class="nav-link" href="viewmedicine.php">View Medicine</a>
+                    </li>
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="customerorders.php">Customer Orders</a>
+                    </li>
+                   
+                    <li class="nav-item active mr-3">
+                        <a class="nav-link" href="logout.php">Logout</a>
                     </li>
                    
                 </ul> 

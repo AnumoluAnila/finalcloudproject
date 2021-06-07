@@ -23,7 +23,7 @@ $query1=mysqli_query($con,$upquery);
 }else{
   
 
-  echo '<script>alert(" Only' .$v.'")</script>';
+  echo '<script>alert(" Only' .$v.' are left")</script>';
   echo "<script>location.href='mycart.php'</script>";
 }
 

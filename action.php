@@ -1,7 +1,5 @@
 <?php
-     include 'dbconn.php';
-
-
+     include 'dbconn.php';     
      if(isset($_POST['action'])){
          $sql="select * from medicine where mcate !=''";
 

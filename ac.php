@@ -10,85 +10,37 @@
 
      if(isset($_POST['action'])){
          $sql="select * from medicine";
-        $mcate=array();
+        $mcate=[];
          if(isset($_POST['mcate'])){
-          //  $mcate=implode("','",$_POST['mcate'])
+           $mcate=implode("','",$_POST[''])
              $mcate=$_POST['mcate'];
              
-         }else{
-          $selectquery="select distinct mcate from medicine order by mcate";
-          $query=mysqli_query($con,$selectquery);
-          while($result=mysqli_fetch_array($query)){
-            array_push($mcate,$result['mcate']);
-
-
-          }
-          // $mtype=implode("','",$mcate1);
-
-
-
-
-        }
-         $mtype1=array();
-         if(isset($_POST['mtype'])){
-          $mtype1=$_POST['mtype'];
-          $mtype=implode("','",$_POST['mtype']);
-        }else{
-          $selectquery="select distinct mtype from medicine order by mtype";
-          $query=mysqli_query($con,$selectquery);
-          while($result=mysqli_fetch_array($query)){
-            array_push($mtype1,$result['mtype']);
-
-
-          }
-          $mtype=implode("','",$mtype1);
-
-
-
-
-        }
+         }
          $output='';
         
        $finoutput="";
 
 
-         if(1)
+         if(count($mcate)>0)
          {
             foreach ($mcate as $cate) {
               
             
+                $output ='<div class="card  mt-4 mx-4">
+                <div class="card-header"><h5 class="text-center" id="textchange">'.$cate.'</h5></div>
                
+                <div class="card-body">
+               
+                    <div class="row" >';
                         
                            
                              $d=$cate;
-                           
-                             $selectquery2="select * from medicine where mcate='$d' and mtype IN ('$mtype')";
+                             $selectquery2="select * from medicine where mcate='$d'";
                              $output1="";
                             //  echo $selectquery;
                              $query=mysqli_query($con,$selectquery2) or die( mysqli_error($con));
-                             $flag=0;
                              while($result=mysqli_fetch_assoc($query)){
-                             
-                              if($result['mqty']>0){
-
-                                if($flag==0){
-
-                                  $output ='<div class="card  mt-4 mx-4">
-                                  <div class="card-header"><h5 class="text-center" id="textchange">'.$cate.'</h5></div>
-                                 
-                                  <div class="card-body">
-                                 
-                                      <div class="row" >';
-                                        $flag=1;
-                                   }
-
-
-
-
-
-
-
-
+                        
                        $output1.= '<div class="col-md-3">
                        <form method="POST">
                             <div class="card mt-3 " style="width: 15rem; height:22rem">
@@ -105,22 +57,17 @@
                             </div>
                             </form>
                         </div>';
-                              }
                              }
-                        if($flag==1){
                     $output3= '
                     </div>
                     </div>
                   </div> ';
                   $finoutput.=$output.$output1.$output3;
-                        }else{
-                  $finoutput.="";
-                        }
 
             }
          }
          else{
-            $finoutput="<h3>NO Medicine Found!</h3>" ;
+            $finoutput="<h3>NO Products Found!</h3>" ;
          }
          echo  $finoutput;
      }

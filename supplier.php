@@ -38,6 +38,10 @@
                         <a class="nav-link" href="viewmedicine.php">View Medicine</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="customerorders.php">Customer Order</a>
+                    </li>
+                    
+                    <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
                     </li>
                 </ul> 
@@ -53,7 +57,7 @@
                  <h2>Pharmacy Management System</h2>
                 
                  <p>Click below to Add Medicine</p>   
-                 <a href="#" class="btn">Add Medicine</a>
+                 <a href="addmedicine.php" class="btn">Add Medicine</a>
                 </div>
                 
 
