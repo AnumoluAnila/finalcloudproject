@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +74,7 @@
             <form  method="POST" action="order.php">
                 <input type="text" name="Uname" placeholder="Card Number" class="form-control mb-2" required>
                 <input type="text" name="Email" placeholder="CVV" class="form-control mb-2" required>
-                
+                <label class="mt-3 text-primary font-weight-bold"><?php echo "Total Price  Rs ".$_POST['total'] ?></label>
                 <button class="btn btn-primary mt-3" name="order">payment</button>
             </form>
 

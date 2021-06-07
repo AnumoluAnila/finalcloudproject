@@ -199,7 +199,7 @@ else{
                             <div class="card-body">
                                 
                                 <p class="card-title " style=" height:5rem"><?php echo $result['mname']; ?></p>
-                                <p class="card-text text-danger">Rs <?php echo $result['price']; ?>
+                                <p class="card-text text-danger font-weight-bold">Rs <?php echo $result['price']; ?>
                                 
                                 <button type="submit" name="addtocart" class="btn btn-primary btn-sm float-right">Add to cart</button>
                                 <!-- <a href="#" class="btn btn-primary btn-sm float-right">Add to cart</a> -->

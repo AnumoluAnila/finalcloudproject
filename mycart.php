@@ -1,7 +1,4 @@
-<?php
-session_start();
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,6 +64,7 @@ session_start();
                 <?php
            
             include 'dbconn.php';
+            session_start();
             $k=$_SESSION["mail"];
             
             $selectquery="select * from cart where cemail='$k'";
@@ -113,6 +111,7 @@ session_start();
 <tr>
     <td colspan="6" class='text-right font-weight-bold'>Grand Total</td>
     <td id="gtotal"></td>
+    <input type="hidden" name="total" id="total">
     <td> <button type="submit" name="order" class="btn btn-sm btn-danger">Order</a></button></td>
 </tr>
 </form>
@@ -132,6 +131,7 @@ session_start();
     var itotal=document.getElementsByClassName("itotal");
     var gtotal=document.getElementById("gtotal");
     
+    
         gt=0;
         for(i=0;i<iprice.length;i++)
         {
@@ -140,6 +140,9 @@ session_start();
             gt=gt+(iprice[i].value)*(iquantity[i].value);
         }
         gtotal.innerText=gt;
+        
+        
+        document.getElementById("total").value=gt;
         
 
         function fun(a){
