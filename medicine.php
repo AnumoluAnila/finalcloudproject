@@ -40,6 +40,7 @@ else{
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -52,16 +53,30 @@ else{
     <title>Document</title>
     <!-- <link rel="stylesheet" href="medicine.css"> -->
 </head>
+<style>
+  #serach_text{
+    width:500px;
+    height:40px;
+    margin-left:430px;
+    
+  }
+  </style>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark pt-3 pb-">
                 <!-- <div class="container"> -->
                     <!-- <a class="navbar-brand" href="#">PMS</a> -->
+                    <form class="form-inline">
+                      <!-- <i class="fa fa-search" style="font-size:24px"></i> -->
+                      <input type="text" name="search" id="serach_text" class="form-control form-control-lg rounded-2 border-dark " placeholder="Search Medicine"> 
+                </form>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
+                    
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
+                
                     <li class="nav-item active mr-3">
                         <a class="nav-link" href="customer.php">Home </a>
                     </li>
@@ -84,6 +99,10 @@ else{
                 </div>      
                 <!-- </div> -->
               </nav>
+              <!-- <div class="form-inline">
+              <i class="fa fa-search" style="font-size:24px"></i>
+            <input type="text" name="search" id="serach_text" class="form-control form-control-lg rounded-2 border-dark" placeholder="Search Medicine"> 
+       </div> -->
               
 <div class="row ml-0 mr-0 ">
 <div class="col-lg-3 ml-5">
@@ -194,7 +213,7 @@ else{
                     
                     <div class="col-3">
                     <form method="POST">
-                        <div class="card mt-3 " style="width: 15rem; height:22rem">
+                        <div class="card mt-3 " style="width: 13rem; height:22rem">
                         <img src="<?php echo $result['mlink']; ?>"  height="180px" class="card-img-top px-4 py-4">
                             <div class="card-body">
                                 
@@ -247,28 +266,50 @@ if($flag==1){
 var king=$("#result").html();
   $(document).ready(function(){
 
-    $(".product_check").click(function(){
-      $("#loader").show();
+    $('#serach_text').keyup(function(){
+            var search= $(this).val();
+            $("#loader").show();
       var action='data';
       var mcate=get_filter_text('mcate');
       var mtype=get_filter_text('mtype');
     console.log(mcate);
-    // if(mcate.length!=0 or mtype.length!=0){
       $.ajax({
         url:'action1.php',
         method:'POST',
-        data:{action:action,mcate:mcate,mtype:mtype},
+        data:{action:action,mcate:mcate,mtype:mtype,search:search},
         success:function(response){
           $("#result").html(response);
           console.log(response);
           $("#loader").hide();
-          // $("#textchange").text("Filtered medicine");
+   
         }
       });
-    // }
-    // }else{
-    //   $("#result").html(king);
-    // }
+            
+        });
+
+
+
+    
+
+    $(".product_check").click(function(){
+      $("#loader").show();
+      var search= $('#serach_text').val();
+      var action='data';
+      var mcate=get_filter_text('mcate');
+      var mtype=get_filter_text('mtype');
+    console.log(mcate);
+      $.ajax({
+        url:'action1.php',
+        method:'POST',
+        data:{action:action,mcate:mcate,mtype:mtype,search:search},
+        success:function(response){
+          $("#result").html(response);
+          console.log(response);
+          $("#loader").hide();
+   
+        }
+      });
+
     });
     function get_filter_text(text_id){
       var filterData=[];

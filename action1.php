@@ -12,7 +12,7 @@
          $sql="select * from medicine";
         $mcate=array();
          if(isset($_POST['mcate'])){
-          //  $mcate=implode("','",$_POST['mcate'])
+          
              $mcate=$_POST['mcate'];
              
          }else{
@@ -23,7 +23,8 @@
 
 
           }
-          // $mtype=implode("','",$mcate1);
+
+         
 
 
 
@@ -47,6 +48,9 @@
 
 
         }
+        
+
+        
          $output='';
         
        $finoutput="";
@@ -61,8 +65,17 @@
                         
                            
                              $d=$cate;
-                           
-                             $selectquery2="select * from medicine where mcate='$d' and mtype IN ('$mtype')";
+                             if(isset($_POST['search'])){
+                               $e=$_POST['search'];
+                              $selectquery2="select * from medicine where mcate='$d' and mtype IN ('$mtype') and mname LIKE CONCAT('%','$e','%')";
+                            }else{
+                              
+                              $selectquery2="select * from medicine where mcate='$d' and mtype IN ('$mtype')";
+                    
+                    
+                    
+                            }
+                             
                              $output1="";
                             //  echo $selectquery;
                              $query=mysqli_query($con,$selectquery2) or die( mysqli_error($con));
