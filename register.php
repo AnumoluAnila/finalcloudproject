@@ -15,7 +15,7 @@ if(isset($_POST['register'])){
     if($pwd!=$rpwd){
         echo '<script>alert("reenteres password is not matching")</script>';
         echo "<script>location.href='login.html'</script>";
-    }
+    }else{
     
     $selectquery="select * from customer where cemail='$cemail'";
     $query=mysqli_query($con,$selectquery);
@@ -31,6 +31,7 @@ if(isset($_POST['register'])){
         echo '<script>alert("you cannot register if you are already registered")</script>';
         echo "<script>location.href='login.html'</script>";
     }
+}
 
 }
  ?>
