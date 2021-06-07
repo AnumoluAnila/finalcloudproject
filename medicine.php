@@ -192,7 +192,7 @@ else{
                              }
                     ?>
                     
-                    <div class="col-md-3">
+                    <div class="col-3">
                     <form method="POST">
                         <div class="card mt-3 " style="width: 15rem; height:22rem">
                         <img src="<?php echo $result['mlink']; ?>"  height="180px" class="card-img-top px-4 py-4">
