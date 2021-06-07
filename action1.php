@@ -104,7 +104,7 @@
 
                        $output1.= '<div class="col-3">
                        <form method="POST">
-                            <div class="card mt-3 " style="width: 15rem; height:22rem">
+                            <div class="card mt-3 " style="width: 13rem; height:22rem">
                             <img src="'. $result['mlink'].'"  height="180px" class="card-img-top px-4 py-4">
                                 <div class="card-body">
                                    
